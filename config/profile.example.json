@@ -1,0 +1,84 @@
+{
+  "_comment": "Copy to config/profile.json and replace every value with your own. profile.json is gitignored — it holds your salary floor, work authorisation and the evidence the model is allowed to claim on your behalf. This file is a WORKING example: the shapes matter, and the tool will run unchanged against it, but the answers will be someone else's.",
+
+  "name": "Ada Example",
+  "headline": "Full-stack engineer — payments, integrations, production LLM systems",
+
+  "location": {
+    "city": "Lagos",
+    "country": "Nigeria",
+    "timezone": "Africa/Lagos",
+    "utcOffset": 1
+  },
+
+  "summary": "Two sentences in your own words: what you build, and what you have run in production. The scorer reads this before anything else, so vague self-description here costs accuracy on every role.",
+
+  "seniority": {
+    "target": ["mid", "senior"],
+    "yearsExperience": 5,
+    "_comment": "acceptTitles earns the titleMatchBonus in the prescore. rejectTitles is matched before scoring, so anything here is a role you will never be shown.",
+    "acceptTitles": [
+      "software engineer", "backend engineer", "full stack engineer",
+      "platform engineer", "product engineer", "forward deployed engineer",
+      "solutions engineer", "technical customer success"
+    ],
+    "rejectTitles": ["intern", "principal", "staff", "director", "vp", "head of"]
+  },
+
+  "stack": {
+    "_comment": "term is matched case-insensitively against title + description; weight is points added, capped per bucket by rules.prescore.max*Points. Keep terms short and lowercase. These three buckets are the whole keyword half of the prescore.",
+    "core": [
+      { "term": "node", "weight": 8 },
+      { "term": "javascript", "weight": 6 },
+      { "term": "react", "weight": 6 },
+      { "term": "postgres", "weight": 5 },
+      { "term": "api", "weight": 4 }
+    ],
+    "domain": [
+      { "term": "payments", "weight": 9 },
+      { "term": "billing", "weight": 8 },
+      { "term": "webhook", "weight": 7 },
+      { "term": "multi-tenant", "weight": 5 },
+      { "term": "e-commerce", "weight": 4 }
+    ],
+    "ai": [
+      { "term": "llm", "weight": 8 },
+      { "term": "rag", "weight": 6 },
+      { "term": "agent", "weight": 5 },
+      { "term": "prompt", "weight": 4 }
+    ]
+  },
+
+  "evidence": [
+    "One line per thing you actually shipped, with a number in it where you have one.",
+    "The model may only draw on these when it writes a cover letter — if it is not here, it cannot claim it.",
+    "Cut anything you would not want quoted back at you in an interview."
+  ],
+
+  "workAuth": {
+    "citizenOf": ["Nigeria"],
+    "eligibleWithoutSponsorship": ["Nigeria"],
+    "needsSponsorshipFor": ["United States", "United Kingdom", "European Union", "Canada"],
+    "note": "Stated verbatim in application answers. Roughly 38% of otherwise-matching remote roles die here rather than on skill, so being precise costs nothing and saves the model from guessing."
+  },
+
+  "preferences": {
+    "arrangement": ["remote"],
+    "acceptableRemoteRegions": ["global", "worldwide", "emea", "africa"],
+    "compensation": {
+      "currency": "USD",
+      "annualFloor": 40000,
+      "note": "Used to reason about a posting's stated range. Never written into an application answer."
+    },
+    "wants": ["ownership end to end", "small team", "product engineering"],
+    "avoids": ["on-call rotation", "heavy meeting load"]
+  },
+
+  "neverClaim": {
+    "_comment": "A hard gate, not a hint. If a generated application contains one of these terms, the whole kit is REJECTED rather than edited — a model asked to describe you against a posting will happily borrow the posting's stack. A false claim survives the screen and collapses at the first interview question. List anything a job ad might tempt it into.",
+    "terms": [
+      { "term": "kubernetes", "truth": "Never run it. Deploys are on managed platforms." },
+      { "term": "rust", "truth": "No production Rust." }
+    ]
+  }
+}

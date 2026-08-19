@@ -1,0 +1,14 @@
+node_modules/
+.env
+.env.local
+data/
+*.log
+.DS_Store
+
+# Your own profile: salary floor, work auth, evidence. Never commit this.
+config/profile.json
+
+# Your board list. Start from config/companies.example.json. Kept out of git because
+# a tiered list of the companies you are targeting, published under your own name, is
+# readable by the people on it — including ones you have live applications with.
+config/companies.json

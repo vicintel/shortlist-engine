@@ -1,0 +1,59 @@
+{
+  "_comment": "EXAMPLE board list. ATS boards are per-company, not a global search, so THIS LIST IS YOUR COVERAGE — the tool can only see companies named here. Copy to companies.json and grow it with `npm run discover -- <slug>`, which probes a slug against Greenhouse, Lever and Ashby and only keeps the ones that resolve. tier and stage feed the prescore boosts below; set them to reflect who you actually want to work for.",
+  "boards": [
+    {
+      "ats": "greenhouse",
+      "slug": "example-fintech",
+      "name": "Example Fintech",
+      "tier": "target",
+      "tags": [
+        "fintech",
+        "payments"
+      ],
+      "stage": "scaleup"
+    },
+    {
+      "ats": "lever",
+      "slug": "example-devtools",
+      "name": "Example Devtools",
+      "tier": "strong",
+      "tags": [
+        "devtools"
+      ],
+      "stage": "startup"
+    },
+    {
+      "ats": "ashby",
+      "slug": "example-remote-co",
+      "name": "Example Remote Co",
+      "tier": "broad",
+      "tags": [
+        "remote-first"
+      ],
+      "stage": "scaleup"
+    }
+  ],
+  "tierBoost": {
+    "target": 12,
+    "strong": 6,
+    "broad": 0
+  },
+  "stageBoost": {
+    "startup": 5,
+    "scaleup": 12,
+    "large": -2,
+    "_comment": "Measured 2026-08-14 over 108 honestly-scored roles: startups are 6% legally reachable (1 of 17), scaleups 38% (30 of 79). The old +14 startup boost was written on a true belief about FIT — a small team really is likelier to want a generalist who owns a system end to end — and a false one about ODDS. A twelve-person company cannot afford to employ someone in Nigeria; a 300-person one often can. The prescore decides who gets READ, and reads are the scarce resource (the free daily quota), so spending them on a 6%-reachable category is waste. Large stayed near neutral rather than penalised: only 5 samples, and Canonical is large and hires on every continent."
+  },
+  "candidates": {
+    "_comment": "Slugs already probed, kept so the same dead ends are not retried. notFound = no public board; usOnly / platformsThatExcludeAfrica = a board exists but cannot employ where you are.",
+    "notFound": [
+      "example-no-public-board"
+    ],
+    "usOnly": [
+      "example-us-only"
+    ],
+    "platformsThatExcludeAfrica": [
+      "example-region-locked"
+    ]
+  }
+}
